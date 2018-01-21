@@ -1,7 +1,7 @@
 ---
 title: "Exploring colour palettes"
 author: "Stef Piatek"
-date: "20 January 2018"
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
 output: 
   html_document:
     keep_md: TRUE
@@ -12,8 +12,7 @@ output:
 This is a quick reference to myself to choose colour palettes, these should colourblind-friendly
 and ideally still discenable when printed in black and white. 
 
-## Setup
-```{r setup}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(babynames)
 library(dplyr)
@@ -58,7 +57,7 @@ Generally can choose any of these, best descrimination, current favourites are:
 - Zissou
 - OkabeIto
 
-```{r plot-5}
+```{r plot-5, echo = FALSE}
 levels_5 <- babynames %>%
   group_by(year) %>%
   filter(year == 1880) %>%
@@ -72,68 +71,68 @@ plot_it <- function(data = NULL){
   return(plt)
 }
 
-## default palette
+print("default palette")
  
 plt <- plot_it(levels_5)
 plt
 cvd_grid(plt)
 
-## custom palette
+print("palette_5")
 plt <- plot_it(levels_5) +
   scale_fill_manual(values = palette_5)  
 plt
 cvd_grid(plt)
 
-## custom palette
+print("palette_18")
 plt <- plot_it(levels_5) +
   scale_fill_manual(values = palette_18)  
 plt
 cvd_grid(plt)
 
-## NEJM
+print("nejm")
 
 plt <- plot_it(levels_5) +
   ggsci::scale_fill_nejm()  
 plt
 cvd_grid(plt)
 
-## jama
+print("jama")
 plt <- plot_it(levels_5) +
   ggsci::scale_fill_jama()  
 plt
 cvd_grid(plt)
 
-## jco
+print("jco")
 plt <- plot_it(levels_5) +
   ggsci::scale_fill_jco()  
 plt
 cvd_grid(plt)
 
-## igv
+print("igv")
 plt <- plot_it(levels_5) +
   ggsci::scale_fill_igv()  
 plt
 cvd_grid(plt)
 
-## Darjeeling
+print("Darjeeling")
 plt <- plot_it(levels_5) +
   scale_fill_manual(values = wes_palette("Darjeeling") ) 
 plt
 cvd_grid(plt)
 
-## Darjeeling2
+print("Darjeeling2")
 plt <- plot_it(levels_5) +
   scale_fill_manual(values = wes_palette("Darjeeling2") ) 
 plt
 cvd_grid(plt)
 
-## Zissou
+print("Zissou")
 plt <- plot_it(levels_5) +
   scale_fill_manual(values = wes_palette("Zissou") ) 
 plt
 cvd_grid(plt)
 
-## OkabeIto
+print("OkabeIto")
 
 plt <- plot_it(levels_5) +
   scale_fill_OkabeIto()
@@ -149,37 +148,37 @@ More tricky, favourite here are:
 - palette_18
 - igv
 
-```{r plot_8}
+```{r plot_8, echo = FALSE}
 levels_8 <- babynames %>%
   group_by(year) %>%
   filter(year == 1880) %>%
     top_n(8, n)
 
-## default palette
+print("default palette")
  
 plt <- plot_it(levels_8)
 plt
 cvd_grid(plt)
 
-## custom palette
+print("palette_18")
 plt <- plot_it(levels_8) +
   scale_fill_manual(values = palette_18)  
 plt
 cvd_grid(plt)
 
-## jco
+print("jco")
 plt <- plot_it(levels_8) +
   ggsci::scale_fill_jco()  
 plt
 cvd_grid(plt)
 
-## igv
+print("igv")
 plt <- plot_it(levels_8) +
   ggsci::scale_fill_igv()  
 plt
 cvd_grid(plt)
 
-## OkabeIto
+print("OkabeIto")
 
 plt <- plot_it(levels_8) +
   colorblindr::scale_fill_OkabeIto()
@@ -187,8 +186,7 @@ plt
 cvd_grid(plt)
 
 
-## OkabeIto black
-
+print("OkabeIto black")
 plt <- plot_it(levels_8) +
   scale_fill_manual(values = colorblindr::palette_OkabeIto_black)
 plt
