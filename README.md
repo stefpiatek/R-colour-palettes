@@ -7,6 +7,8 @@ Stef Piatek
 This is a quick reference to myself to choose colour palettes, these should colourblind-friendly
 and ideally still discenable when printed in black and white. 
 
+See the [exploring-colour-palettes.Rmd](exploring-colour-palettes.Rmd) script for the palettes used
+
 
 
 ## R Markdown
